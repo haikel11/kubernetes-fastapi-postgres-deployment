@@ -1,0 +1,10 @@
+server stopped
+
+PostgreSQL init process complete; ready for start up.
+
+2026-04-11 22:49:37.989 UTC [1] LOG:  starting PostgreSQL 12.0 on x86_64-pc-linux-musl, compiled by gcc (Alpine 8.3.0) 8.3.0, 64-bit
+2026-04-11 22:49:37.990 UTC [1] LOG:  listening on IPv4 address "0.0.0.0", port 5432
+2026-04-11 22:49:37.990 UTC [1] LOG:  listening on IPv6 address "::", port 5432
+2026-04-11 22:49:37.995 UTC [1] LOG:  listening on Unix socket "/var/run/postgresql/.s.PGSQL.5432"
+2026-04-11 22:49:38.018 UTC [42] LOG:  database system was shut down at 2026-04-11 22:49:37 UTC
+2026-04-11 22:49:38.025 UTC [1] LOG:  database system is ready to accept connections

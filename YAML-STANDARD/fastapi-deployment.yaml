@@ -1,0 +1,31 @@
+apiVersion: apps/v1 # on définit la version de l'api kub pour le deployment
+kind: Deployment # on déclare qu'on veut créer un deployment
+metadata:
+  name: fastapi # nom du deployment
+  namespace: default # défault comme sur la consigne
+spec: # définition du container
+  replicas: 3 # on demande 3 instances de notre app (répartition des charges)
+  selector:
+    matchLabels:
+      app: fastapi # le deployment va gérer les pods qui ont le label app:fastapi
+  template:
+    metadata:
+      labels:
+        app: fastapi # on définit la template des pods
+    spec:
+      containers:
+        - name: fastapi # nom du container dans le pod
+          image: fastapi-app:latest # ici c'est l'image docker utilisée
+          imagePullPolicy: Never # kub ne vas pas essayer de dl l'image car on utilise une image locale
+          ports:
+            - containerPort: 5000 # on déclare que le container écoute sur le port 5000
+          env: # Variables d'environnement
+            - name: DATABASE_URL
+              value: "postgresql://admin:password@db:5432/storedb" # variables d'environnements à notre app
+          resources: # on définit les ressources minimales demandées (gestion cpu/ram)
+            requests:
+              memory: "128Mi" 
+              cpu: "100m" 
+            limits: # on définit les limites max
+              memory: "256Mi"
+              cpu: "500m"
